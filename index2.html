@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root>div {
+            width: 10rem;
+            height: 10rem;
+            background-color: aquamarine;
+        }
+
+        .styling {
+            background-color: red;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div>{{ msg }} </div>
+        <div @click="changeColor" v-bind:class="{ styling : styleDiv }"></div>
+        <div>{{ onlyFirstLetter }}</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                msg: 'hej',
+                styleDiv: false
+            },
+            methods: {
+                changeColor() {
+                    console.log('hej')
+                    this.styleDiv = true
+                }
+            },
+            computed: {
+                onlyFirstLetter() {
+                    return 'm'
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

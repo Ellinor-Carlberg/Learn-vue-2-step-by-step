@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root">
+        <p>{{message}}</p>
+        <input type="text" v-model="input" v-bind:title="title">
+        <button v-on:click="addName"></button>
+        <p>this is your input:{{input}}</p>
+        <ul>
+            <li v-for="name in names">
+                {{name}}
+            </li>
+        </ul>
+        <h1 @click="toogleClass" :class="{ 'red-color': toogle }">CLICK ME</h1>
+        <h2 v-text="messageReversed"></h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                message: 'add a name:',
+                input: '',
+                names: ['miri', 'lisa', 'ellen', 'karen'],
+                toogle: false,
+                title: 'Add a name'
+            },
+            methods: {
+                addName() {
+                    if (this.input !== '') {
+                        this.names.push(this.input)
+                        this.input = ''
+                    }
+                },
+                toogleClass() {
+                    this.toogle = !this.toogle
+                }
+            },
+            computed: {
+                messageReversed() {
+                    const splitMsg = this.message.split('')
+
+                    const revereseMsg = splitMsg.reverse()
+
+                    const joinMsg = revereseMsg.join('')
+
+                    return joinMsg
+                }
+            }
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>
